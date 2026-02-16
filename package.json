@@ -1,6 +1,6 @@
 {
 	"name": "schema-guard",
-	"version": "0.0.0-development",
+	"version": "1.0.0",
 	"description": "Create lightweight runtime type guards from a plain object schema",
 	"license": "MIT",
 	"repository": "mstuart/schema-guard",
