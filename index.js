@@ -12,12 +12,13 @@ function getBaseType(type) {
 
 function checkType(value, type) {
 	const isOptional = type.endsWith('?');
-	const isArray = type.endsWith('[]');
-	const baseType = getBaseType(type);
 
 	if (isOptional && (value === undefined || value === null)) {
 		return true;
 	}
+
+	const isArray = type.endsWith('[]');
+	const baseType = getBaseType(type);
 
 	if (isArray) {
 		if (!Array.isArray(value)) {
