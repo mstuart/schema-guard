@@ -1,7 +1,16 @@
-# schema-guard
+<div align="center">
+  <img src="docs/assets/logo.svg" alt="schema-guard — Create lightweight runtime type guards from a plain object schema" width="720">
+</div>
 
-> Create lightweight runtime type guards from a plain object schema
+<p align="center"><strong>Create lightweight runtime type guards from a plain object schema</strong></p>
 
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://www.npmjs.com/package/schema-guard"><img src="https://img.shields.io/npm/v/schema-guard?label=npm" alt="npm"></a>
+  <img src="https://img.shields.io/badge/node-%E2%89%A520-339933.svg" alt="Node 20+">
+</p>
+
+---
 ## Install
 
 ```sh
