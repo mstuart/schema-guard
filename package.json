@@ -1,44 +1,47 @@
 {
-	"name": "schema-guard",
-	"version": "1.0.0",
-	"description": "Create lightweight runtime type guards from a plain object schema",
-	"license": "MIT",
-	"repository": "mstuart/schema-guard",
-	"funding": "https://github.com/sponsors/mstuart",
-	"author": {
-		"name": "Mark Stuart",
-		"email": "mstuart@users.noreply.github.com",
-		"url": "https://github.com/mstuart"
-	},
-	"type": "module",
-	"exports": {
-		"types": "./index.d.ts",
-		"default": "./index.js"
-	},
-	"sideEffects": false,
-	"engines": {
-		"node": ">=20"
-	},
-	"scripts": {
-		"test": "xo && ava && tsd"
-	},
-	"files": [
-		"index.js",
-		"index.d.ts"
-	],
-	"keywords": [
-		"schema",
-		"guard",
-		"type",
-		"check",
-		"validate",
-		"runtime",
-		"typescript",
-		"typeguard"
-	],
-	"devDependencies": {
-		"ava": "^8.0.1",
-		"tsd": "^0.33.0",
-		"xo": "^4.0.0"
-	}
+  "name": "schema-guard",
+  "version": "1.0.0",
+  "description": "Create lightweight runtime type guards from a plain object schema",
+  "keywords": [
+    "schema",
+    "guard",
+    "type",
+    "check",
+    "validate",
+    "runtime",
+    "typescript",
+    "typeguard"
+  ],
+  "repository": "mstuart/schema-guard",
+  "funding": "https://github.com/sponsors/mstuart",
+  "license": "MIT",
+  "author": {
+    "name": "Mark Stuart",
+    "email": "mstuart@users.noreply.github.com",
+    "url": "https://github.com/mstuart"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "test": "ava && tsd"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.6",
+    "ava": "^8.0.1",
+    "tsd": "^0.33.0",
+    "ultracite": "7.10.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }
