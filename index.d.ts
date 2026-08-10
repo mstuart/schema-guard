@@ -1,14 +1,14 @@
 export type SchemaType =
-	| 'string'
-	| 'number'
-	| 'boolean'
-	| 'bigint'
-	| 'symbol'
-	| 'function'
-	| 'object'
-	| 'array'
-	| `${string}?`
-	| `${string}[]`;
+  | "string"
+  | "number"
+  | "boolean"
+  | "bigint"
+  | "symbol"
+  | "function"
+  | "object"
+  | "array"
+  | `${string}?`
+  | `${string}[]`;
 
 export type Schema = Record<string, SchemaType>;
 
@@ -40,4 +40,6 @@ isUser({name: 'Alice'});
 //=> false
 ```
 */
-export default function schemaGuard(schema: Schema): (value: unknown) => boolean;
+export default function schemaGuard(
+  schema: Schema
+): (value: unknown) => boolean;
