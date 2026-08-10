@@ -12,17 +12,12 @@ jobs:
         node-version:
           - 24
           - 22
-    # Node 20 was dropped from the test matrix: the xo/ava devDependency
-    # chain (eslint-plugin-unicorn) calls Set.prototype.union, an ES2024
-    # feature only available from Node 22 onward, so the dev toolchain
-    # (lint/test runner) can no longer run on Node 20. This is a devtool-only
-    # ceiling, not a schema-guard runtime constraint — package.json's
-    # `engines` field (Node >=20) still describes the shipped code and is
-    # unaffected.
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
+      - name: Ultracite check
+        run: npm run check
       - run: npm test
