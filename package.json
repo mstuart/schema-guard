@@ -1,6 +1,6 @@
 {
   "name": "schema-guard",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Create lightweight runtime type guards from a plain object schema",
   "keywords": [
     "schema",
