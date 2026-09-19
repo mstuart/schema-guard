@@ -47,7 +47,12 @@ export default function schemaGuard(schema) {
   const entries = Object.entries(schema);
 
   return (value) => {
-    if (value === null || value === undefined || typeof value !== "object") {
+    if (
+      value === null ||
+      value === undefined ||
+      typeof value !== "object" ||
+      Array.isArray(value)
+    ) {
       return false;
     }
 

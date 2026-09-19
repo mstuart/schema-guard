@@ -156,6 +156,7 @@ test("empty schema still rejects non-objects", (t) => {
   t.false(guard(null));
   t.false(guard(undefined));
   t.false(guard("string"));
+  t.false(guard([]));
 });
 
 test("object type rejects arrays", (t) => {
