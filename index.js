@@ -1,46 +1,29 @@
-function getBaseType(type) {
-  if (type.endsWith("[]")) {
-    return type.slice(0, -2);
-  }
-
-  if (type.endsWith("?")) {
-    return type.slice(0, -1);
-  }
-
-  return type;
-}
-
 function checkType(value, type) {
-  const isOptional = type.endsWith("?");
-
-  if (isOptional && (value === undefined || value === null)) {
-    return true;
+  if (type.endsWith("?")) {
+    return (
+      value === undefined ||
+      value === null ||
+      checkType(value, type.slice(0, -1))
+    );
   }
 
-  const isArray = type.endsWith("[]");
-  const baseType = getBaseType(type);
-
-  if (isArray) {
+  if (type.endsWith("[]")) {
     if (!Array.isArray(value)) {
       return false;
     }
 
-    if (baseType === "array") {
-      return true;
-    }
-
-    return value.every((item) => typeof item === baseType);
+    return value.every((item) => checkType(item, type.slice(0, -2)));
   }
 
-  if (baseType === "array") {
+  if (type === "array") {
     return Array.isArray(value);
   }
 
-  if (baseType === "object") {
+  if (type === "object") {
     return typeof value === "object" && value !== null && !Array.isArray(value);
   }
 
-  return typeof value === baseType;
+  return typeof value === type;
 }
 
 export default function schemaGuard(schema) {
