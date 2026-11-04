@@ -12,7 +12,14 @@ function checkType(value, type) {
       return false;
     }
 
-    return value.every((item) => checkType(item, type.slice(0, -2)));
+    // Preserve the initial length while checking holes and indexed values.
+    const { length } = value;
+    for (let index = 0; index < length; index += 1) {
+      if (!checkType(value[index], type.slice(0, -2))) {
+        return false;
+      }
+    }
+    return true;
   }
 
   if (type === "array") {
