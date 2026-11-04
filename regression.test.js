@@ -24,3 +24,33 @@ test("optional typed arrays accept present valid values and reject bad items", (
   t.false(guard({ values: [1] }));
   t.false(guard({ values: "a" }));
 });
+
+test("typed arrays validate sparse positions as undefined", (t) => {
+  const values = ["a"];
+  values.length = 2;
+  t.false(schemaGuard({ values: "string[]" })({ values }));
+  t.true(schemaGuard({ values: "string?[]" })({ values }));
+  t.true(schemaGuard({ values: "string[]" })({ values: [] }));
+});
+
+test("typed arrays inspect indexed values when iteration is customized", (t) => {
+  const values = ["wrong"];
+  Object.defineProperty(values, Symbol.iterator, {
+    *value() {
+      yield 1;
+    },
+  });
+  t.false(schemaGuard({ values: "number[]" })({ values }));
+});
+
+test("typed arrays retain the initial length when a getter extends input", (t) => {
+  const values = ["ok"];
+  Object.defineProperty(values, 0, {
+    get() {
+      values.push(1);
+      return "ok";
+    },
+  });
+  t.true(schemaGuard({ values: "string[]" })({ values }));
+  t.is(values.length, 2);
+});
